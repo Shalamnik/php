@@ -2,7 +2,7 @@
 
 include('config/db_connect.php');
 
-$sql = 'SELECT name, email, text, img, created_at FROM reviews ORDER BY created_at';
+$sql = 'SELECT name, email, text, img, created_at FROM reviews ORDER BY created_at DESC';
 
 $result = mysqli_query($connect, $sql);
 
