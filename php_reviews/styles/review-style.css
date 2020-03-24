@@ -1,0 +1,46 @@
+.reviews {
+  max-width: 70%;
+  margin: auto;
+}
+
+.review {
+  border: 2px solid #ccc;
+  background-color: #eee;
+  border-radius: 5px;
+  padding: 16px;
+  margin: 16px 0;
+  word-wrap: break-word;
+}
+
+.review img {
+  width: 90px;
+  float: left;
+  margin-right: 20px;
+  border-radius: 50%;
+}
+
+.review span {
+  display: inline-block;
+  font-size: 20px;
+  margin-right: 15px;
+}
+
+.review #date {
+  float: right;
+}
+
+.review #text {
+  margin: 20px 40px 20px 60px;
+}
+
+@media (max-width: 500px) {
+  .review {
+    text-align: center;
+  }
+
+  .review img {
+    margin: auto;
+    float: none;
+    display: block;
+  }
+}
