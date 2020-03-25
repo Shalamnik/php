@@ -1,10 +1,8 @@
 <?php
 
 $form_error = '';
-$rev_add = '';
 $name = $email = $review = '';
 $errors = array('name' => '', 'email' => '', 'review' => '');
-
 
 //check submit
 if (isset($_POST['submit'])) {
@@ -74,6 +72,7 @@ if (isset($_POST['submit'])) {
         $img = addslashes(file_get_contents($_FILES['userImg']['tmp_name']));
       }
     } else {
+      
       $img = null;
     }
 
@@ -81,13 +80,6 @@ if (isset($_POST['submit'])) {
 
     //save to db and check
     if (mysqli_query($connect, $sql)) {
-      // $rev_add = 'Review added';
-
-      // $name = '';
-      // $email = '';
-      // $review = '';
-
-      // mysqli_close($connect);
       
       header('location: index.php');
       exit();
