@@ -34,8 +34,6 @@
       <input type="hidden" name="MAX_FILE_SIZE" value="16777215">
       <input type="file" name="userImg">
 
-      <p><span class="error"><?php echo $rev_add ?></span></p>
-
       <input type="submit" name="submit" value="Submit">
     </form>
   </div>
