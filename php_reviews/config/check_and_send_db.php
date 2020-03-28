@@ -80,6 +80,7 @@ if (isset($_POST['submit'])) {
 
     //save to db and check
     if (mysqli_query($connect, $sql)) {
+      mysqli_close($connect);
       
       header('location: index.php');
       exit();
