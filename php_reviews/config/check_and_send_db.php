@@ -41,7 +41,7 @@ if (isset($_POST['submit'])) {
     $form_error = 'Errors in the form';
   } else {
 
-    include('config/db_connect.php');
+    include('db_connect.php');
 
     $name = mysqli_real_escape_string($connect, $_POST['name']);
     $email = mysqli_real_escape_string($connect, $_POST['email']);
@@ -49,7 +49,7 @@ if (isset($_POST['submit'])) {
 
     //check img type and size
     $img_type = $_FILES['userImg']['type'];
-    print_r($_FILES['userImg']['tmp_name']);
+    print_r('hellosdf');
 
     if (
       $img_type === 'image/png' ||
@@ -61,7 +61,7 @@ if (isset($_POST['submit'])) {
 
       if ($size_img[0] > 320 || $size_img[1] > 240) {
 
-        include('config/compress_img.php');
+        include('compress_img.php');
 
         $source_img = $_FILES['userImg']['tmp_name'];
 
