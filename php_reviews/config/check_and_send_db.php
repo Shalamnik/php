@@ -49,6 +49,7 @@ if (isset($_POST['submit'])) {
 
     //check img type and size
     $img_type = $_FILES['userImg']['type'];
+    print_r($_FILES['userImg']['tmp_name']);
 
     if (
       $img_type === 'image/png' ||
@@ -57,7 +58,6 @@ if (isset($_POST['submit'])) {
     ) {
 
       $size_img = getimagesize($_FILES['userImg']['tmp_name']);
-      print_r($size_img);
 
       if ($size_img[0] > 320 || $size_img[1] > 240) {
 
@@ -81,7 +81,7 @@ if (isset($_POST['submit'])) {
     //save to db and check
     if (mysqli_query($connect, $sql)) {
       mysqli_close($connect);
-      
+
       header('location: index.php');
       exit();
 
