@@ -2,7 +2,7 @@
 
 include('config/db_connect.php');
 
-$sql = 'SELECT name, email, text, img, created_at FROM reviews ORDER BY created_at DESC';
+$sql = 'SELECT name, email, text, img_name, img_path, created_at FROM reviews ORDER BY created_at DESC';
 
 $result = mysqli_query($connect, $sql);
 
@@ -19,10 +19,10 @@ mysqli_close($connect);
     <div class="review">
       <?php
 
-      if ($review['img_name'] == null) {
+      if ($review['img_path'] == null) {
         echo '<img src="images/default-as-png.png" alt="user-img">';
       } else {
-        echo '<img src="data:image/jpeg;base64,' . base64_encode($review['img']) . '"/>';
+        echo '<img src="' . $review['img_path'] . '">';
       }
 
       ?>

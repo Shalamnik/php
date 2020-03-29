@@ -58,7 +58,7 @@ if (isset($_POST['submit'])) {
 
       $img_name = $_FILES['userImg']['name'];
       $img_path = $_FILES['userImg']['tmp_name'];
-      $upload_path = 'images/' . basename($img_name);
+      $upload_path = 'images/' . $img_name;
 
       $size_img = getimagesize($img_path);
 
@@ -66,7 +66,7 @@ if (isset($_POST['submit'])) {
 
         include('compress_img.php');
 
-        $img = compress($img_path, $img_name, 75);
+        $img = compress($img_path, $img_path, 75);
 
         move_uploaded_file($img, $upload_path);
 
