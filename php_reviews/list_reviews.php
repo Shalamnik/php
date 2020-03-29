@@ -19,7 +19,7 @@ mysqli_close($connect);
     <div class="review">
       <?php
 
-      if ($review['img'] == null) {
+      if ($review['img_name'] == null) {
         echo '<img src="images/default-as-png.png" alt="user-img">';
       } else {
         echo '<img src="data:image/jpeg;base64,' . base64_encode($review['img']) . '"/>';

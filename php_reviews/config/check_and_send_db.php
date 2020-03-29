@@ -56,26 +56,33 @@ if (isset($_POST['submit'])) {
       $img_type === 'image/gif'
     ) {
 
-      $size_img = getimagesize($_FILES['userImg']['tmp_name']);
+      $img_name = $_FILES['userImg']['name'];
+      $img_path = $_FILES['userImg']['tmp_name'];
+      $upload_path = 'images/' . basename($img_name);
+
+      $size_img = getimagesize($img_path);
 
       if ($size_img[0] > 320 || $size_img[1] > 240) {
 
         include('compress_img.php');
 
-        $source_img = $_FILES['userImg']['tmp_name'];
+        $img = compress($img_path, $img_name, 75);
 
-        $img = compress($source_img, $source_img, 75);
-        $img = addslashes(file_get_contents($img));
+        move_uploaded_file($img, $upload_path);
+
       } else {
 
-        $img = addslashes(file_get_contents($_FILES['userImg']['tmp_name']));
+        move_uploaded_file($img_path, $upload_path);
       }
+
+
     } else {
       
-      $img = null;
+      $img_name = null;
+      $upload_path = null;
     }
 
-    $sql = "INSERT INTO reviews (name, email, text, img) VALUES ('{$name}', '{$email}', '{$review}', '{$img}')";
+    $sql = "INSERT INTO reviews (name, email, text, img_name, img_path) VALUES ('{$name}', '{$email}', '{$review}', '{$img_name}', '{$upload_path}')";
 
     //save to db and check
     if (mysqli_query($connect, $sql)) {
