@@ -49,7 +49,6 @@ if (isset($_POST['submit'])) {
 
     //check img type and size
     $img_type = $_FILES['userImg']['type'];
-    print_r('hellosdf');
 
     if (
       $img_type === 'image/png' ||
@@ -83,7 +82,6 @@ if (isset($_POST['submit'])) {
       mysqli_close($connect);
 
       header('location: index.php');
-      exit();
 
     } else {
       echo 'query error: ' . mysqli_error($connect);
