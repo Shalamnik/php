@@ -16,8 +16,8 @@ input[type=text], input[type=email], input[type=file], textarea {
   margin: 6px 0 16px 0;
 }
 
-input[type=submit] {
-  width: 100%;
+input[type=submit], #btn-preview {
+  width: 49%;
   background-color: #4CAF50;
   color: white;
   padding: 12px 20px;
@@ -26,7 +26,8 @@ input[type=submit] {
   cursor: pointer;
 }
 
-input[type=submit]:hover {
+input[type=submit]:hover,
+#btn-preview:hover {
   background-color: #45a049;
 }
 
