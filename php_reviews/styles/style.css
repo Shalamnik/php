@@ -8,7 +8,8 @@
   padding: 20px;
 }
 
-input[type=text], input[type=email], input[type=file], textarea {
+input[type=text], input[type=email], input[type=file], input[type=password],
+textarea {
   width: 100%;
   padding: 12px;
   border: 1px solid #ccc;
@@ -27,7 +28,7 @@ input[type=submit], #btn-preview {
 }
 
 input[type=submit]:hover,
-#btn-preview:hover {
+#btn-preview:hover, #login:hover {
   background-color: #45a049;
 }
 
@@ -41,5 +42,15 @@ input[type=submit]:hover,
   display: block;
   width: 100px;
   margin: 5px auto;
+}
+
+#login {
+  width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }
 

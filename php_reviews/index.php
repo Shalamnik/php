@@ -36,7 +36,7 @@
 
       <input type="submit" name="submit" value="Submit">
       <button id="btn-preview" type="button" value="Preview">Preview</button>
-      <a id="admin" href="#">For Admin</a>
+      <a id="admin" href="admin.php">For Admin</a>
     </form>
   </div>
 
