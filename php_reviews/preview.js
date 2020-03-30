@@ -16,7 +16,7 @@ function readFile(form) {
   }
 
   reader.onerror = () => {
-    img.src = 'images/default-as-png.png';
+    img.src = 'images/default.png';
   }
 }
 

@@ -20,7 +20,7 @@ mysqli_close($connect);
       <?php
 
       if ($review['img_path'] == null) {
-        echo '<img src="images/default-as-png.png" alt="user-img">';
+        echo '<img src="images/default.png" alt="user-img">';
       } else {
         echo '<img src="' . $review['img_path'] . '">';
       }
