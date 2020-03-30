@@ -38,6 +38,7 @@
       <button id="btn-preview" type="button" value="Preview">Preview</button>
     </form>
   </div>
+  
   <script src="preview.js"></script>
 
   <?php include('list_reviews.php') ?>
