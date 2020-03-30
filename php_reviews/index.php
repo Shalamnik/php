@@ -36,9 +36,10 @@
 
       <input type="submit" name="submit" value="Submit">
       <button id="btn-preview" type="button" value="Preview">Preview</button>
+      <a id="admin" href="#">For Admin</a>
     </form>
   </div>
-  
+
   <script src="preview.js"></script>
 
   <?php include('list_reviews.php') ?>

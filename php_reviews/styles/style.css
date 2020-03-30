@@ -37,3 +37,9 @@ input[type=submit]:hover,
   text-align: center;
 }
 
+.container #admin {
+  display: block;
+  width: 100px;
+  margin: 5px auto;
+}
+
