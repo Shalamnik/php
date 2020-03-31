@@ -1,4 +1,5 @@
 .reviews {
+  position: relative;
   max-width: 70%;
   margin: auto;
 }
@@ -33,6 +34,25 @@
   margin: 20px;
 }
 
+.navigation {
+  display: block;
+  position: fixed;
+  right: 25px;
+}
+
+.navigation a {
+  display: block;
+  background-color: #4CAF50;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  padding: 12px 20px;
+  margin-top: 5px;
+  border-radius: 4px;
+  cursor: pointer;
+
+}
+
 @media (max-width: 500px) {
   .review {
     text-align: center;
@@ -42,5 +62,9 @@
     margin: auto;
     float: none;
     display: block;
+  }
+
+  .navigation {
+    right: 5px;
   }
 }

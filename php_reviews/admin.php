@@ -1,3 +1,16 @@
+<?php 
+
+
+  if (isset($_POST['submit'])) {
+
+    if (($_POST['login'] == 'admin') && ($_POST['password'] == 12345)) {
+      header('location: admin_reviews.php');
+    }
+  }
+
+
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -20,10 +33,11 @@
       <label for="password">Password:</label>
       <input type="password" name="password">
 
-      <button id="login" type="submit" name="submit">Log in</button>
+      <button id="login" type="submit" name="submit" value="submit">Log in</button>
     </form>
   </div>
 
 </body>
 
 </html>
+
