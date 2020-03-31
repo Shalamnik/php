@@ -64,7 +64,7 @@ if (isset($_POST['submit'])) {
 
       if ($size_img[0] > 320 || $size_img[1] > 240) {
 
-        include('compress_img.php');
+        include('img_compress.php');
 
         $img = compress($img_path, $img_path, 75);
 

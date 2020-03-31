@@ -1,6 +1,6 @@
 <?php
 
-include('config/db_connect.php');
+include('modules/db_connect.php');
 
 $sql = 'SELECT name, email, text, img_name, img_path, created_at FROM reviews ORDER BY created_at DESC';
 

@@ -1,4 +1,4 @@
-<?php include('config/check_and_send_db.php') ?>
+<?php include('modules/form_process.php') ?>
 
 <!DOCTYPE html>
 <html>
@@ -6,8 +6,8 @@
 <head>
   <title>PHP test</title>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <link href="styles/style.css" rel="stylesheet" type="text/css">
-  <link href="styles/review-style.css" rel="stylesheet" type="text/css">
+  <link href="styles/main.css" rel="stylesheet" type="text/css">
+  <link href="styles/reviews.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
@@ -42,7 +42,7 @@
 
   <script src="preview.js"></script>
 
-  <?php include('list_reviews.php') ?>
+  <?php include('reviews.php') ?>
 
 </body>
 
