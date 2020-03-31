@@ -40,7 +40,7 @@
     </form>
   </div>
 
-  <script src="preview.js"></script>
+  <script src="scripts/preview.js"></script>
 
   <?php include('reviews.php') ?>
 
