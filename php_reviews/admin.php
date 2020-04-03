@@ -1,10 +1,13 @@
 <?php 
 
+  $incorrect = '';
 
   if (isset($_POST['submit'])) {
 
     if (($_POST['login'] == 'admin') && ($_POST['password'] == 12345)) {
       header('location: admin_reviews.php');
+    } else {
+      $incorrect = 'incorrect password or login';
     }
   }
 
@@ -32,6 +35,7 @@
 
       <label for="password">Password:</label>
       <input type="password" name="password">
+      <p class="error"><?php echo $incorrect ?></p>
 
       <button id="login" type="submit" name="submit" value="submit">Log in</button>
     </form>
