@@ -4,7 +4,7 @@ include('modules/db_connect.php');
 
 if (isset($_POST['delete'])) {
 
-  $delete_id = mysqli_real_escape_string($connect, $_POST['delete_id']);
+  $delete_id = mysqli_real_escape_string($connect, $_POST['edit_id']);
 
   $sql = "DELETE FROM reviews WHERE id = {$delete_id}";
 
@@ -16,7 +16,21 @@ if (isset($_POST['delete'])) {
 
 }
 
-$sql = 'SELECT id, name, email, text, img_name, img_path, created_at FROM reviews ORDER BY created_at DESC';
+if (isset($_POST['checked'])) {
+
+  $check_id = mysqli_real_escape_string($connect, $_POST['edit_id']);
+ 
+  $sql = "UPDATE reviews SET admin_checked = 1 WHERE id = $check_id";
+
+  if (mysqli_query($connect, $sql)) {
+    header('location: admin_reviews.php');
+  } else {
+    echo 'query error: ' . mysqli_error($connect);
+  }
+
+}
+
+$sql = 'SELECT id, name, email, text, img_name, img_path, created_at, admin_checked FROM reviews ORDER BY created_at DESC';
 
 $result = mysqli_query($connect, $sql);
 
@@ -29,6 +43,8 @@ mysqli_close($connect);
 
 <div class="reviews">
   <?php foreach ($reviews as $review) : ?>
+    <?php if ($_SERVER['SCRIPT_NAME'] == '/github/php/php_reviews/index.php' && 
+              !$review['admin_checked']) continue; ?>
 
     <div class="review">
       <?php
@@ -58,10 +74,21 @@ mysqli_close($connect);
       <!-- add admin editing -->
       
       <?php if ($_SERVER['SCRIPT_NAME'] == '/github/php/php_reviews/admin_reviews.php'): ?>
+      
+        <?php if ($review['admin_checked'] == true): ?>
+
+          <h4 style="text-align: right">Checked</h4>
+
+        <?php else: ?>
+
+          <h4>Unchecked</h4>
+
+        <?php endif; ?> 
       <p>
         <form action="admin_reviews.php" method="POST">
-          <input type="hidden" name="delete_id" value="<?php echo htmlspecialchars($review['id']) ?>">
-          <input type="submit" name="delete" value="delete">
+          <input type="hidden" name="edit_id" value="<?php echo htmlspecialchars($review['id']) ?>">
+          <input type="submit" name="delete" value="DELETE">
+          <input type="submit" name="checked" value="CHECKED">
         </form>
       </p>
       <?php endif; ?>
