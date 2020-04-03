@@ -2,7 +2,21 @@
 
 include('modules/db_connect.php');
 
-$sql = 'SELECT name, email, text, img_name, img_path, created_at FROM reviews ORDER BY created_at DESC';
+if (isset($_POST['delete'])) {
+
+  $delete_id = mysqli_real_escape_string($connect, $_POST['delete_id']);
+
+  $sql = "DELETE FROM reviews WHERE id = {$delete_id}";
+
+  if (mysqli_query($connect, $sql)) {
+    header('location: admin_reviews.php');
+  } else {
+    echo 'query error: ' . mysqli_error($connect);
+  }
+
+}
+
+$sql = 'SELECT id, name, email, text, img_name, img_path, created_at FROM reviews ORDER BY created_at DESC';
 
 $result = mysqli_query($connect, $sql);
 
@@ -40,6 +54,17 @@ mysqli_close($connect);
       <p id="text">
         <b>Review:</b> <br><br> <?php echo htmlspecialchars($review['text']); ?>
       </p>
+
+      <!-- add admin editing -->
+      
+      <?php if ($_SERVER['SCRIPT_NAME'] == '/github/php/php_reviews/admin_reviews.php'): ?>
+      <p>
+        <form action="admin_reviews.php" method="POST">
+          <input type="hidden" name="delete_id" value="<?php echo htmlspecialchars($review['id']) ?>">
+          <input type="submit" name="delete" value="delete">
+        </form>
+      </p>
+      <?php endif; ?>
     </div>
 
   <?php endforeach; ?>
