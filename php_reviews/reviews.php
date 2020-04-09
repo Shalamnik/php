@@ -74,7 +74,7 @@ mysqli_close($connect);
 
             <!-- add admin editing -->
 
-            <?php if ($_SERVER['SCRIPT_NAME'] == '/github/php/php_reviews/admin_reviews.php') : ?>
+            <?php if ($_SERVER['SCRIPT_NAME'] == '/github/php/php_reviews/admin_reviews.php'): ?>
 
                 <?php if ($review['admin_checked'] == true) : ?>
 

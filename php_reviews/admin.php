@@ -1,7 +1,5 @@
 <?php
 
-$incorrect = '';
-
 if (isset($_POST['submit'])) {
 
     if (($_POST['login'] == 'admin') && ($_POST['password'] == 12345)) {
@@ -34,7 +32,7 @@ if (isset($_POST['submit'])) {
 
             <label for="password">Password:</label>
             <input type="password" name="password">
-            <p class="error"><?php echo $incorrect ?></p>
+            <p class="error"><?= $incorrect ?? ''; ?></p>
 
             <button id="login" type="submit" name="submit" value="submit">Log in</button>
         </form>

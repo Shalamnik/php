@@ -15,20 +15,20 @@
     <div class="container">
         <form method="POST" enctype="multipart/form-data">
             <h1 style="text-align: center">Reviews</h1>
-            <p>Fill this form to create a review <span class="error"><?php echo $form_error ?></span></p>
+            <p>Fill this form to create a review <span class="error"><?= $form_error ?? ''; ?></span></p>
             <hr>
 
             <label for="name">Name:</label>
-            <span class="error"><?php echo $errors['name']; ?></span>
-            <input type="text" name="name" value="<?php echo htmlspecialchars($name); ?>">
+            <span class="error"><?= $errors['name'] ?? ''; ?></span>
+            <input type="text" name="name" value="<?= htmlspecialchars($name ?? ''); ?>">
 
             <label for="mail">E-mail:</label>
-            <span class="error"><?php echo $errors['email']; ?></span>
-            <input type="email" name="email" value="<?php echo htmlspecialchars($email); ?>">
+            <span class="error"><?= $errors['email'] ?? ''; ?></span>
+            <input type="email" name="email" value="<?= htmlspecialchars($email ?? ''); ?>">
 
             <label for="review">Review:</label>
-            <span class="error"><?php echo $errors['review'];  ?></span>
-            <textarea id="text" name="review"><?php echo htmlspecialchars($review); ?></textarea>
+            <span class="error"><?= $errors['review'] ?? ''; ?></span>
+            <textarea id="text" name="review"><?= htmlspecialchars($review ?? ''); ?></textarea>
 
             <label for="userImg"><b>Choose your Avatar:</b></label>
             <input type="hidden" name="MAX_FILE_SIZE" value="16777215">

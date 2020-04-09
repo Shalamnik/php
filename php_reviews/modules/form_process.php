@@ -1,40 +1,10 @@
 <?php
 
-$form_error = '';
-$name = $email = $review = '';
-$errors = array('name' => '', 'email' => '', 'review' => '');
+require('user_validator.php');
 
-//check submit
 if (isset($_POST['submit'])) {
-
-    if (empty($_POST['name'])) {
-        $errors['name'] = 'A name is required';
-    } else {
-        $name = $_POST['name'];
-        if (!preg_match('/^[a-zA-Z0-9\s]+$/', $name)) {
-            $errors['name'] = 'Name must have letters, digits and spaces only';
-        }
-    }
-
-    //check email
-    if (empty($_POST['email'])) {
-        $errors['email'] = 'An email is required';
-    } else {
-        $email = $_POST['email'];
-        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            $errors['email'] = 'Email must be a valid email address';
-        }
-    }
-
-    //check text review
-    if (empty($_POST['review'])) {
-        $errors['review'] = 'Review must have some characters';
-    } else {
-        $review = $_POST['review'];
-        if (!preg_match('/^[a-zA-Z0-9\s.,:!\'\"]+/', $review)) {
-            $errors['review'] = 'Review must have letter, digits and spaces only';
-        }
-    }
+    $validation = new UserValidator($_POST);
+    $errors = $validation->validateForm();
 
     //check errors in form and send data to db
     if (array_filter($errors)) {
@@ -58,9 +28,9 @@ if (isset($_POST['submit'])) {
             $img_path = $_FILES['userImg']['tmp_name'];
             $upload_path = 'images/' . $img_name;
 
-            $size_img = getimagesize($img_path);
+            $img_size = getimagesize($img_path);
 
-            if ($size_img[0] > 320 || $size_img[1] > 240) {
+            if ($img_size[0] > 320 || $img_size[1] > 240) {
                 include('img_compress.php');
 
                 $img = compress($img_path, $img_path, 75);
