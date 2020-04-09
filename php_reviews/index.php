@@ -4,45 +4,45 @@
 <html>
 
 <head>
-  <title>PHP test</title>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <link href="styles/main.css" rel="stylesheet" type="text/css">
-  <link href="styles/reviews.css" rel="stylesheet" type="text/css">
+    <title>PHP test</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link href="styles/main.css" rel="stylesheet" type="text/css">
+    <link href="styles/reviews.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
-  
-  <div class="container">
-    <form method="POST" enctype="multipart/form-data">
-      <h1 style="text-align: center">Reviews</h1>
-      <p>Fill this form to create a review <span class="error"><?php echo $form_error ?></span></p>
-      <hr>
 
-      <label for="name">Name:</label>
-      <span class="error"><?php echo $errors['name']; ?></span>
-      <input type="text" name="name" value="<?php echo htmlspecialchars($name); ?>">
+    <div class="container">
+        <form method="POST" enctype="multipart/form-data">
+            <h1 style="text-align: center">Reviews</h1>
+            <p>Fill this form to create a review <span class="error"><?php echo $form_error ?></span></p>
+            <hr>
 
-      <label for="mail">E-mail:</label>
-      <span class="error"><?php echo $errors['email']; ?></span>
-      <input type="email" name="email" value="<?php echo htmlspecialchars($email); ?>">
+            <label for="name">Name:</label>
+            <span class="error"><?php echo $errors['name']; ?></span>
+            <input type="text" name="name" value="<?php echo htmlspecialchars($name); ?>">
 
-      <label for="review">Review:</label>
-      <span class="error"><?php echo $errors['review'];  ?></span>
-      <textarea id="text" name="review"><?php echo htmlspecialchars($review); ?></textarea>
+            <label for="mail">E-mail:</label>
+            <span class="error"><?php echo $errors['email']; ?></span>
+            <input type="email" name="email" value="<?php echo htmlspecialchars($email); ?>">
 
-      <label for="userImg"><b>Choose your Avatar:</b></label>
-      <input type="hidden" name="MAX_FILE_SIZE" value="16777215">
-      <input type="file" name="userImg">
+            <label for="review">Review:</label>
+            <span class="error"><?php echo $errors['review'];  ?></span>
+            <textarea id="text" name="review"><?php echo htmlspecialchars($review); ?></textarea>
 
-      <input type="submit" name="submit" value="Submit">
-      <button id="btn-preview" type="button" value="Preview">Preview</button>
-      <a id="admin" href="admin.php">For Admin</a>
-    </form>
-  </div>
+            <label for="userImg"><b>Choose your Avatar:</b></label>
+            <input type="hidden" name="MAX_FILE_SIZE" value="16777215">
+            <input type="file" name="userImg">
 
-  <script src="scripts/preview.js"></script>
+            <input type="submit" name="submit" value="Submit">
+            <button id="btn-preview" type="button" value="Preview">Preview</button>
+            <a id="admin" href="admin.php">For Admin</a>
+        </form>
+    </div>
 
-  <?php include('reviews.php') ?>
+    <script src="scripts/preview.js"></script>
+
+    <?php include('reviews.php') ?>
 
 </body>
 

@@ -1,9 +1,9 @@
-<?php 
+<?php
 
-  $connect = mysqli_connect('localhost', 'shalamnik', '131619121518nM$', 'phpformdb');
+$connect = mysqli_connect('localhost', 'shalamnik', '131619121518nM$', 'phpformdb');
 
-  if (!$connect) {
+if (!$connect) {
     echo 'Connection error: ' . mysqli_connect_error();
-  }
+}
 
 ?>
