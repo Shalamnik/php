@@ -59,17 +59,17 @@ mysqli_close($connect);
             ?>
             <p>
                 <span>
-                    Name: <?php echo htmlspecialchars($review['name']); ?>
+                    Name: <?= htmlspecialchars($review['name']); ?>
                 </span>
                 <span>
-                    Email: <?php echo htmlspecialchars($review['email']); ?>
+                    Email: <?= htmlspecialchars($review['email']); ?>
                 </span>
                 <span id="date">
-                    Date: <?php echo htmlspecialchars($review['created_at']); ?>
+                    Date: <?= htmlspecialchars($review['created_at']); ?>
                 </span>
             </p>
             <p id="text">
-                <b>Review:</b> <br><br> <?php echo htmlspecialchars($review['text']); ?>
+                <b>Review:</b> <br><br> <?= htmlspecialchars($review['text']); ?>
             </p>
 
             <!-- add admin editing -->
@@ -87,7 +87,7 @@ mysqli_close($connect);
                 <?php endif; ?>
                 <p>
                     <form action="admin_reviews.php" method="POST">
-                        <input type="hidden" name="edit_id" value="<?php echo htmlspecialchars($review['id']) ?>">
+                        <input type="hidden" name="edit_id" value="<?= htmlspecialchars($review['id']) ?>">
                         <input type="submit" name="delete" value="DELETE">
                         <input type="submit" name="checked" value="CHECKED">
                     </form>
