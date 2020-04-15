@@ -8,11 +8,13 @@ if (isset($_POST['delete'])) {
 
     $sql = "DELETE FROM reviews WHERE id = {$delete_id}";
 
-    if (mysqli_query($connect, $sql)) {
-        header('location: admin_reviews.php');
-    } else {
-        echo 'query error: ' . mysqli_error($connect);
-    }
+    $db->query($sql);
+
+    // if (mysqli_query($connect, $sql)) {
+    //     header('location: admin_reviews.php');
+    // } else {
+    //     echo 'query error: ' . mysqli_error($connect);
+    // }
 }
 
 if (isset($_POST['checked'])) {
@@ -21,22 +23,25 @@ if (isset($_POST['checked'])) {
 
     $sql = "UPDATE reviews SET admin_checked = 1 WHERE id = $check_id";
 
-    if (mysqli_query($connect, $sql)) {
-        header('location: admin_reviews.php');
-    } else {
-        echo 'query error: ' . mysqli_error($connect);
-    }
+    $db->query($sql);
+
+    // if (mysqli_query($connect, $sql)) {
+    //     header('location: admin_reviews.php');
+    // } else {
+    //     echo 'query error: ' . mysqli_error($connect);
+    // }
 }
 
 $sql = 'SELECT id, name, email, text, img_name, img_path, created_at, admin_checked 
         FROM reviews ORDER BY created_at DESC';
 
-$result = mysqli_query($connect, $sql);
+$reviews = $db->query($sql)->fetchAll();
+// $result = mysqli_query($connect, $sql);
 
-$reviews = mysqli_fetch_all($result, MYSQLI_ASSOC);
+// $reviews = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
-mysqli_free_result($result);
-mysqli_close($connect);
+// mysqli_free_result($result);
+// mysqli_close($connect);
 
 ?>
 

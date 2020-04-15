@@ -97,6 +97,9 @@ class db
                 $result[$key] = $val;
             }
         }
+        $this->query->close();
+        $this->query_closed = true;
+        return $result;
     }
 
     public function close()
