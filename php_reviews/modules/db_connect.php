@@ -1,9 +1,12 @@
 <?php
 
-$connect = mysqli_connect('localhost', 'shalamnik', '131619121518nM$', 'phpformdb');
+include('db.php');
 
-if (!$connect) {
-    echo 'Connection error: ' . mysqli_connect_error();
-}
+$dbhost = 'localhost';
+$dbuser = 'shalamnik';
+$dbpass = '131619121518nM$';
+$dbname = 'reviews_db';
+
+$db = new db($dbhost, $dbuser, $dbpass, $dbname);
 
 ?>
