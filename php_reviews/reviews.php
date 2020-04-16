@@ -3,45 +3,23 @@
 include('modules/db_connect.php');
 
 if (isset($_POST['delete'])) {
-
-    $delete_id = mysqli_real_escape_string($connect, $_POST['edit_id']);
-
-    $sql = "DELETE FROM reviews WHERE id = {$delete_id}";
-
-    $db->query($sql);
-
-    // if (mysqli_query($connect, $sql)) {
-    //     header('location: admin_reviews.php');
-    // } else {
-    //     echo 'query error: ' . mysqli_error($connect);
-    // }
+    if ($db->query("DELETE FROM reviews WHERE id = ?", $_POST['edit_id'])) {
+        $db->close();
+        header('location: admin_reviews.php');
+    }
 }
 
 if (isset($_POST['checked'])) {
-
-    $check_id = mysqli_real_escape_string($connect, $_POST['edit_id']);
-
-    $sql = "UPDATE reviews SET admin_checked = 1 WHERE id = $check_id";
-
-    $db->query($sql);
-
-    // if (mysqli_query($connect, $sql)) {
-    //     header('location: admin_reviews.php');
-    // } else {
-    //     echo 'query error: ' . mysqli_error($connect);
-    // }
+    if ($db->query("UPDATE reviews SET admin_checked = 1 WHERE id = ?", $_POST['edit_id'])) {
+        $db->close();
+        header('location: admin_reviews.php');
+    }
 }
 
 $sql = 'SELECT id, name, email, text, img_name, img_path, created_at, admin_checked 
         FROM reviews ORDER BY created_at DESC';
 
 $reviews = $db->query($sql)->fetchAll();
-// $result = mysqli_query($connect, $sql);
-
-// $reviews = mysqli_fetch_all($result, MYSQLI_ASSOC);
-
-// mysqli_free_result($result);
-// mysqli_close($connect);
 
 ?>
 
