@@ -60,7 +60,7 @@ class UserValidator
         if(empty($val)) {
             $this->addError('review', "review can't be empty");
         } else {
-            if (!preg_match('/^[a-zA-Z0-9\s.,:!\'\"]+/', $val)) {
+            if (!preg_match('/^[a-zA-Z0-9\s.,:!\'\"\p{Cyrillic}]+/u', $val)) {
                 $this->addError('review', 'Review must have letter, digits and spaces only');
             }
         }
