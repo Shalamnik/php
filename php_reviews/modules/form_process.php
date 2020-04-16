@@ -6,17 +6,15 @@ if (isset($_POST['submit'])) {
     $validation = new UserValidator($_POST);
     $errors = $validation->validateForm();
 
-    //check errors in form and send data to db
     if (array_filter($errors)) {
         $form_error = 'Errors in the form';
     } else {
         include('db_connect.php');
 
-        $name = mysqli_real_escape_string($connect, $_POST['name']);
-        $email = mysqli_real_escape_string($connect, $_POST['email']);
-        $review = mysqli_real_escape_string($connect, $_POST['review']);
+        $name = $db->escape_string($_POST['name']);
+        $email = $db->escape_string($_POST['email']);
+        $review = $db->escape_string($_POST['review']);
 
-        //check img type and size
         $img_type = $_FILES['userImg']['type'];
 
         if (
@@ -26,9 +24,9 @@ if (isset($_POST['submit'])) {
         ) {
             $img_name = $_FILES['userImg']['name'];
             $img_path = $_FILES['userImg']['tmp_name'];
-            $upload_path = 'images/' . $img_name;
-
             $img_size = getimagesize($img_path);
+            
+            $upload_path = 'images/' . $img_name;
 
             if ($img_size[0] > 320 || $img_size[1] > 240) {
                 include('img_compress.php');
@@ -45,15 +43,12 @@ if (isset($_POST['submit'])) {
         }
 
         $sql = "INSERT INTO reviews (name, email, text, img_name, img_path) 
-                VALUES ('{$name}', '{$email}', '{$review}', '{$img_name}', '{$upload_path}')";
+                VALUES (?, ?, ?, ?, ?)";
 
-        //save to db and check
-        if (mysqli_query($connect, $sql)) {
-            mysqli_close($connect);
+        if ($db->query($sql, $name, $email, $review, $img_name, $upload_path)) {
+            $db->close();
 
             header('location: index.php');
-        } else {
-            echo 'query error: ' . mysqli_error($connect);
         }
     }
 }
