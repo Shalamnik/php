@@ -25,10 +25,12 @@ $reviews = $db->query($sql)->fetchAll();
 
 <div class="reviews">
     <?php foreach ($reviews as $review) : ?>
-        <?php if (
-            $_SERVER['SCRIPT_NAME'] == '/github/php/php_reviews/index.php' &&
-            !$review['admin_checked']
-        ) continue; ?>
+        <?php 
+            if (
+                $_SERVER['SCRIPT_NAME'] == '/github/php/php_reviews/index.php' &&
+                !$review['admin_checked']
+            ) continue; 
+        ?>
 
         <div class="review">
             <?php

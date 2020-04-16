@@ -8,6 +8,9 @@ if (isset($_POST['submit'])) {
 
     if (array_filter($errors)) {
         $form_error = 'Errors in the form';
+        $name = $_POST['name'];
+        $email = $_POST['email'];
+        $review = $_POST['review'];
     } else {
         include('db_connect.php');
 
