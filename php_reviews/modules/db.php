@@ -137,6 +137,12 @@ class db
         if (is_int($var)) return 'i';
         return 'b';
     }
+
+    public function escape_string($str)
+    {
+        $escape_str = $this->connection->real_escape_string($str);
+        return $escape_str;
+    }
 }
 
 ?>
