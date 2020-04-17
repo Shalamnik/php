@@ -25,7 +25,7 @@ if (isset($_POST['submit'])) {
             $img_name = $_FILES['userImg']['name'];
             $img_path = $_FILES['userImg']['tmp_name'];
             $img_size = getimagesize($img_path);
-            
+
             $upload_path = 'images/' . $img_name;
 
             if ($img_size[0] > 320 || $img_size[1] > 240) {

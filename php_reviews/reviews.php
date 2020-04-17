@@ -54,7 +54,7 @@ $reviews = $db->query($sql)->fetchAll();
                 </span>
             </p>
             <p id="text">
-                <b>Review:</b> <br><br> <?= htmlspecialchars($review['text']); ?>
+                <b>Review:</b> <br><br> <?= nl2br(htmlspecialchars($review['text'])); ?>
             </p>
 
             <!-- add admin editing -->
