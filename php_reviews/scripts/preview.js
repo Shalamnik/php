@@ -36,7 +36,7 @@ function getDate() {
     if (secs < 10) secs = '0' + secs;
 
     let time = `${date.getFullYear()}-${month}-${day} ` +
-        `${hours}:${mins}:${secs}`;
+               `${hours}:${mins}:${secs}`;
 
     return time;
 }
@@ -56,8 +56,11 @@ function getFormData(form) {
     userDate.innerHTML = 'Date: ' + getDate();
 
     let userText = document.createElement('p');
+    let inputText = form.elements.review.value;
+    inputText.trim();
+    inputText = inputText.replace(/\r?\n|\r/g, '<br>');
+    userText.innerHTML = "<b>Review:</b><br><br>" + inputText;
     userText.id = 'text';
-    userText.innerHTML = "<b>Review:</b><br><br>" + form.elements.review.value;
 
     formData.append(userName, userEmail, userDate, userText);
 
