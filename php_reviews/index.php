@@ -4,7 +4,7 @@
 <html>
 
 <head>
-    <title>PHP test</title>
+    <title>Reviews</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <link href="styles/main.css" rel="stylesheet" type="text/css">
     <link href="styles/reviews.css" rel="stylesheet" type="text/css">
@@ -14,7 +14,6 @@
 
     <div class="container">
         <form method="POST" enctype="multipart/form-data">
-            <h1 style="text-align: center">Reviews</h1>
             <p>Fill this form to create a review <span class="error"><?= $form_error ?? ''; ?></span></p>
             <hr>
 
