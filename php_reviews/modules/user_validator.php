@@ -34,8 +34,8 @@ class UserValidator
         if(empty($val)) {
             $this->addError('name', "name can't be empty");
         } else {
-            if(!preg_match('/^[a-zA-Z0-9]+$/', $val)) {
-                $this->addError('name', 'name must be 6-12 chars & alphanumeric');
+            if(!preg_match('/^[a-zA-Z0-9\\p{Cyrillic}]+$/u', $val)) {
+                $this->addError('name', 'Name must have chars and alphanumeric');
             }
         }
     }

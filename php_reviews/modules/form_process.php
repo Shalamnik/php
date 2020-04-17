@@ -6,17 +6,14 @@ if (isset($_POST['submit'])) {
     $validation = new UserValidator($_POST);
     $errors = $validation->validateForm();
 
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $review = $_POST['review'];
+
     if (array_filter($errors)) {
         $form_error = 'Errors in the form';
-        $name = $_POST['name'];
-        $email = $_POST['email'];
-        $review = $_POST['review'];
     } else {
         include('db_connect.php');
-
-        $name = $db->escape_string($_POST['name']);
-        $email = $db->escape_string($_POST['email']);
-        $review = $db->escape_string($_POST['review']);
 
         $img_type = $_FILES['userImg']['type'];
 
