@@ -1,8 +1,15 @@
 <?php
 
+session_start();
+
+if (isset($_SESSION['admin'])) {
+    header('location: admin_reviews.php');
+}
+
 if (isset($_POST['submit'])) {
 
-    if (($_POST['login'] == 'admin') && ($_POST['password'] == 12345)) {
+    if ($_POST['login'] == 'admin' && $_POST['password'] == 12345) {
+        $_SESSION['admin'] = true;
         header('location: admin_reviews.php');
     } else {
         $incorrect = 'incorrect password or login';

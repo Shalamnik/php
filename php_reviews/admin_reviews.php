@@ -1,3 +1,9 @@
+<?php 
+
+session_start();
+
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -11,7 +17,7 @@
 <body>
     <nav class="navigation">
         <a href="index.php">User form</a>
-        <a href="admin.php">Log out</a>
+        <a href="logout.php">Log out</a>
     </nav>
     <?php include('reviews.php') ?>
 </body>
