@@ -3,13 +3,17 @@
 session_start();
 
 if (isset($_SESSION['admin'])) {
-    header('location: admin_reviews.php');
+    if ($_SESSION['admin'] == $_SERVER['HTTP_USER_AGENT']) {
+        header('location: admin_reviews.php');
+    } else {
+        $incorrect = 'Invalid Session';
+    }
 }
 
 if (isset($_POST['submit'])) {
 
     if ($_POST['login'] == 'admin' && $_POST['password'] == 12345) {
-        $_SESSION['admin'] = true;
+        $_SESSION['admin'] = $_SERVER['HTTP_USER_AGENT'];
         header('location: admin_reviews.php');
     } else {
         $incorrect = 'incorrect password or login';
