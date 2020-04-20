@@ -10,7 +10,16 @@ if (isset($_POST['delete'])) {
 }
 
 if (isset($_POST['checked'])) {
-    if ($db->query("UPDATE reviews SET admin_checked = 1 WHERE id = ?", $_POST['edit_id'])) {
+    $query = 'SELECT admin_checked FROM reviews WHERE id = ?';
+    $response = $db->query($query, $_POST['edit_id'])->fetchAll();
+    $checked = $response[0]['admin_checked'];
+
+    if ($checked) {
+        $db->query("UPDATE reviews SET admin_checked = 0 WHERE id = ?", $_POST['edit_id']);
+        $db->close();
+        header('location: admin_reviews.php');
+    } else {
+        $db->query("UPDATE reviews SET admin_checked = 1 WHERE id = ?", $_POST['edit_id']);
         $db->close();
         header('location: admin_reviews.php');
     }
@@ -64,17 +73,20 @@ $reviews = $db->query($sql)->fetchAll();
                 <?php if ($review['admin_checked'] == true) : ?>
 
                     <h4 style="text-align: right">Checked</h4>
+                    <?php $input_value = 'UNCHECKED'; ?>
 
                 <?php else : ?>
 
                     <h4>Unchecked</h4>
+                    <?php $input_value = 'CHECKED'; ?>
 
                 <?php endif; ?>
                 <p>
-                    <form action="admin_reviews.php" method="POST">
-                        <input type="hidden" name="edit_id" value="<?= htmlspecialchars($review['id']) ?>">
-                        <input type="submit" name="delete" value="DELETE">
-                        <input type="submit" name="checked" value="CHECKED">
+                    <form class="admin" action="admin_reviews.php" method="POST">
+                        <input type="hidden" name="edit_id" value="<?= htmlspecialchars($review['id']); ?>">
+                        <input style="width: 33%" type="submit" name="edit" value="EDIT">
+                        <input style="width: 33%" type="submit" name="delete" value="DELETE">
+                        <input style="width: 33%" type="submit" name="checked" value="<?= $input_value; ?>">
                     </form>
                 </p>
             <?php endif; ?>
