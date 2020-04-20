@@ -25,6 +25,13 @@ if (isset($_POST['checked'])) {
     }
 }
 
+if (isset($_POST['edit'])) {
+    session_start();
+    $_SESSION['user_id'] = $_POST['edit_id'];
+
+    header('location: admin_edit.php');
+}
+
 $sql = 'SELECT id, name, email, text, img_name, img_path, created_at, admin_checked 
         FROM reviews ORDER BY created_at DESC';
 
