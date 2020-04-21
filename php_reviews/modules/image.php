@@ -46,6 +46,7 @@ class Image
             }
         } else {
             $this->img_name = null;
+            $this->img_path = null;
             return $this->img_name;
         }
     }
@@ -54,13 +55,16 @@ class Image
     {
         $img = $this->validateImg();
         move_uploaded_file($img, $this->upload_path);
-        
-        return $this->upload_path;
     }
 
     public function getName()
     {
         return $this->img_name;
+    }
+
+    public function getPath()
+    {
+        return $this->upload_path;
     }
 
     private function checkType($img_type)
