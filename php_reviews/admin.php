@@ -11,7 +11,6 @@ if (isset($_SESSION['admin'])) {
 }
 
 if (isset($_POST['submit'])) {
-
     if ($_POST['login'] == 'admin' && $_POST['password'] == 12345) {
         $_SESSION['admin'] = $_SERVER['HTTP_USER_AGENT'];
         header('location: admin_reviews.php');

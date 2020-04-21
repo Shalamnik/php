@@ -32,9 +32,7 @@ if (isset($_POST['edit'])) {
     header('location: admin_edit.php');
 }
 
-$sql = 'SELECT id, name, email, text, img_name, img_path, created_at, admin_checked 
-        FROM reviews ORDER BY created_at DESC';
-
+$sql = 'SELECT * FROM reviews ORDER BY created_at DESC';
 $reviews = $db->query($sql)->fetchAll();
 
 ?>
@@ -72,7 +70,9 @@ $reviews = $db->query($sql)->fetchAll();
             <p id="text">
                 <b>Review:</b> <br><br> <?= nl2br(htmlspecialchars($review['text'])); ?>
             </p>
-
+            <?php if ($review['admin_changed']): ?>
+                <h4 style="text-align: right">Changed by Admin</h4>
+            <?php endif; ?>
             <!-- add admin editing -->
 
             <?php if ($_SERVER['SCRIPT_NAME'] == '/github/php/php_reviews/admin_reviews.php'): ?>

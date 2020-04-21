@@ -3,8 +3,8 @@
 include('modules/db_connect.php');
 
 session_start();
-$sql = 'SELECT * FROM reviews WHERE id = ?';
 
+$sql = 'SELECT * FROM reviews WHERE id = ?';
 $user_data = $db->query($sql, $_SESSION['user_id'])->fetchArray();
 
 if (isset($_POST['edit'])) {
@@ -40,10 +40,10 @@ if (isset($_POST['edit'])) {
         $upload_path = null;
     }
 
-    $sql = "UPDATE reviews SET name = ?, email = ?, text = ?, img_name = ?, img_path = ? 
-            WHERE id = ?";
+    $sql = "UPDATE reviews SET name = ?, email = ?, text = ?, img_name = ?, img_path = ?,
+            admin_changed = ? WHERE id = ?";
     
-    if ($db->query($sql, $name, $email, $review, $img_name, $upload_path, $_SESSION['user_id'])) {
+    if ($db->query($sql, $name, $email, $review, $img_name, $upload_path, 1, $_SESSION['user_id'])) {
         $db->close();
 
         header('location: admin_edit.php');
@@ -51,7 +51,6 @@ if (isset($_POST['edit'])) {
 }
 
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
