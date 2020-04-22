@@ -1,6 +1,13 @@
 <?php 
 
 if (isset($_POST['delete'])) {
+    $sql = "SELECT img_path FROM reviews WHERE id = ?";
+    $img_path = $db->query($sql, $_POST['edit_id'])->fetchArray()['img_path'];
+    
+    if ($img_path) {
+        unlink($img_path);    
+    }
+
     if ($db->query("DELETE FROM reviews WHERE id = ?", $_POST['edit_id'])) {
         $db->close();
         header('location: admin_reviews.php');
