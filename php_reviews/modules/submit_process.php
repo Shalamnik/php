@@ -10,6 +10,7 @@ if (isset($_POST['delete'])) {
 
     if ($db->query("DELETE FROM reviews WHERE id = ?", $_POST['edit_id'])) {
         $db->close();
+        
         header('location: admin_reviews.php');
     }
 }
